@@ -1,0 +1,91 @@
+extends layout
+
+block content
+    header
+        h1#header
+            a(href="/") Log out
+            |  | #{user[0].name}
+    body#bodyLayout(onload="configTaskPage()")
+        div.menu()
+          // Menu
+          form(name='createtask', action='/task/create', method='post', class="login", accept-charset='utf-8', onsubmit='return validateForm()')
+                    input(type='text', name='task_title', placeholder='Title', required, autofocus)
+                    input(type='text', name='task_description', placeholder='Description', required)
+                    input(type='text', name='task_colaborator1', placeholder='colaborator1@email.com')
+                    input(type='text', name='task_colaborator2', placeholder='colaborator2@email.com')
+                    input(type='text', name='task_colaborator3', placeholder='colaborator3@email.com')
+                    button(type='submit', value='Submit' class="submitButton")
+                        span(class="state") Submit
+                    button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
+                        span(class="state") Cancel
+        section
+            center
+                h1 Welcome, #{user[0].name}
+                button#createTask(onclick="openCreateTaskForm()" class="taskButton")
+                    span(class="state") Create task
+                if errormsg
+                    each error, i in errormsg
+                        p(class="validation-error")=error
+        section
+            center
+                each taskList, i in task
+                    ul        
+                        li
+                            div(class="task")
+                                p Title: #{taskList.title}
+                                p Description: #{taskList.description}
+                                p Owner: #{taskList.colaborator0}
+                                p Colaborators: 
+                                    -var taskColaborator1 = taskList.colaborator1
+                                    -var taskColaborator2 = taskList.colaborator2
+                                    -var taskColaborator3 = taskList.colaborator3
+                                    if taskColaborator1 != 'null'
+                                        |#{taskList.colaborator1}
+                                    if taskColaborator2 != 'null'
+                                        |#{taskList.colaborator2}
+                                    if taskColaborator3 != 'null'
+                                        |#{taskList.colaborator3}
+                                p
+                                    -var owner = taskList.colaborator0
+                                    -var userEmail = user[0].email
+                                    if owner == userEmail
+                                            form(name='deletetask', action='deletetask', method='post', accept-charset='utf-8', class='taskForm')
+                                                input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
+                                                input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
+                                                input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
+                                                button(type='submit', value='Delete' class="taskRedFormButton")
+                                                    span(class="state") Delete
+                                    form(name='updatetask', action='updatetask', method='post', accept-charset='utf-8', class='taskForm')
+                                        input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
+                                        input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
+                                        input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
+                                        input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                        if taskList.state
+                                            button(type='submit', value='Done' class="taskGreenFormButton")
+                                                span(name = "taskState", class="state") Complete
+                                        else
+                                            button(type='submit', value='Done' class="taskRedFormButton")
+                                                span(name = "taskState", class="state") Not Complete
+    script(type='text/javascript').
+        function configTaskPage(){
+            //var errormsg = "#{errormsg}";
+            //if(errormsg.length > 0){
+            //    alert(errormsg);
+            //}
+        }
+        
+        function closeCreateTaskForm() {
+            $('.menu').animate({
+                left: "-350px"
+                }, 200);
+        }
+        
+        function openCreateTaskForm() {
+            $('.menu').animate({
+                left: "37.37%"
+                }, 200);
+        }
+    script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+    
+    
+    

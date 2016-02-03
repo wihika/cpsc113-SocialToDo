@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  body#bodyLayout(onload="configLogPage()")
+    div.menu
+      // Menu
+      form(name='adduser', action='adduser', method='post', accept-charset='utf-8', onsubmit='return validateForm()')
+        ul
+          li
+            label Name
+            input(type='text', name='user_name', placeholder='full name', required='')
+          li
+            label Email
+            input(type='text', name='user_email', placeholder='email@email.com', required='')
+          li
+            label Password
+            input(type='password', name='user_password', placeholder='password', required='')
+          li
+            label Password Confirmation
+            input(type='password', name='user_password_confirm', placeholder='password', required='')
+          li
+            input(type='submit', value='Submit' class="buttonStyle")
+            input(type='button' onclick='closeSignInForm()' value='Cancel' class="buttonStyle")
+
+    div#mainContent(class="mainContent")
+      section#sectionLayout()
+        form#login(name="login", method="post", action="/", onsubmit="")
+          ul
+            li
+              label Email  
+              input#inputEmail(type="text", placeholder="email", name="email")
+            li
+              label Password  
+              input#inputPassword(type="password", placeholder="password", name="password")
+            li
+              button#btnSubmit(type="submit", class="buttonStyle") Log in
+              button#btnSignin(type="button", onclick="openSignInForm()", class="buttonStyle") Sign in
+  script(type='text/javascript').
+    function configLogPage(){
+      var errormsg = "#{errormsg}";
+      if(errormsg.length > 0){
+        alert(errormsg);
+      }
+    }
+    
+    function closeSignInForm() {
+      $('.menu').animate({
+          left: "-285px"
+      }, 200);
+      $('body').animate({
+        left: "0px"
+      }, 200);
+    }
+    
+    function openSignInForm() {
+        $('.menu').animate({
+            left: "0px"
+        }, 200);
+        $('body').animate({
+            left: "285px"
+        }, 200);
+    }
+  
+  script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')

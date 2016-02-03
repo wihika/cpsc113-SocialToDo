@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  body#bodyLayout(onload="configLogPage()")
+    div.menu()
+        form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8', onsubmit='return validateForm()')
+            input(type='text', name='fl_name', placeholder='first &amp; last name')
+            input(type='text', name='email', placeholder='email@email.com')
+            input(type='password', name='password', placeholder='Password')
+            input(type='password', name='password_confirmation', placeholder='Password confirmation')
+            button(type='submit', value='Submit', class="submitButton")
+              span(class="state") Submit
+            button(class="cancelButton", type='button' onclick='closeSignInForm()' value='Cancel', background="red")
+              span(class="state") Cancel
+
+    div#mainContent(class="wrapper")
+      if errormsg
+        each error, i in errormsg
+          p(class="validation-error")=error
+      form#login(class="login", name="login", method="post", action="/user/login", onsubmit="")
+        p(class="title") Log in
+        input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
+        i(class="fa-email")
+        input#inputPassword(type="password", placeholder="Password", name="password")
+        i(class="fa-pass")
+        button#btnSubmit(class="loginButton", type="submit")
+          i(class="spinner")
+          span(class="state") Log in
+        button#btnSignin(class="signinButton", type="button", onclick="openSignInForm()")
+          i(class="spinner")
+          span(class="state") Sign up
+  footer
+    a(href="/") Log out
+  script(type='text/javascript').
+    function configLogPage(){
+      //var errormsg = "#{errormsg}";
+      //if(errormsg.length > 0){
+      //  alert(errormsg);
+      //}
+    }
+    
+    function closeSignInForm() {
+      $('.menu').animate({
+          left: "-350px"
+      }, 200);
+    }
+    
+    function openSignInForm() {
+        $('.menu').animate({
+            left: "37.37%"
+        }, 200);
+    }
+  
+  script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
