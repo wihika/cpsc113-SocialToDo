@@ -3,7 +3,7 @@ extends layout
 block content
     header
         h1#header
-            a(href="/") Log out
+            a(href="/user/logout") Log out
             |  | #{user[0].name}
     body#bodyLayout(onload="configTaskPage()")
         div.menu()
@@ -49,11 +49,11 @@ block content
                                     -var owner = taskList.colaborator0
                                     -var userEmail = user[0].email
                                     if owner == userEmail
-                                            form(name='deletetask', action='deletetask', method='post', accept-charset='utf-8', class='taskForm')
+                                            form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
                                                 input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                                 input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                                 input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
-                                                button(type='submit', value='Delete' class="taskRedFormButton")
+                                                button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
                                     form(name='updatetask', action='updatetask', method='post', accept-charset='utf-8', class='taskForm')
                                         input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
@@ -61,7 +61,7 @@ block content
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                         input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
                                         if taskList.state
-                                            button(type='submit', value='Done' class="taskGreenFormButton")
+                                            button(type='submit', value='Done' class="taskGreenFormButton tasks-list-mark")
                                                 span(name = "taskState", class="state") Complete
                                         else
                                             button(type='submit', value='Done' class="taskRedFormButton")
