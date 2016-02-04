@@ -8,7 +8,7 @@ block content
             input(type='text', name='email', placeholder='email@email.com')
             input(type='password', name='password', placeholder='Password')
             input(type='password', name='password_confirmation', placeholder='Password confirmation')
-            button(type='submit', value='Submit', class="submitButton log-in-submit")
+            button(type='submit', value='Submit', class="submitButton sign-up-submit")
               span(class="state") Submit
             button(class="cancelButton", type='button' onclick='closeSignInForm()' value='Cancel', background="red")
               span(class="state") Cancel
@@ -23,7 +23,7 @@ block content
         i(class="fa-email")
         input#inputPassword(type="password", placeholder="Password", name="password")
         i(class="fa-pass")
-        button#btnSubmit(class="loginButton sign-up-submit", type="submit")
+        button#btnSubmit(class="loginButton log-in-submit", type="submit")
           i(class="spinner")
           span(class="state") Log in
         button#btnSignin(class="signinButton", type="button", onclick="openSignInForm()")
