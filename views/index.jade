@@ -16,7 +16,7 @@ block content
     div#mainContent(class="wrapper")
       if errormsg
         each error, i in errormsg
-          p(class=" validation-error")=error
+          p(class="validation-error")=error
       form#login(class="login", name="login", method="post", action="/user/login", onsubmit="")
         p(class="title") Log in
         input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
