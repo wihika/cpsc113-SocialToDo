@@ -149,7 +149,7 @@ router.post('/user/register', function(req, res) {
 function validateSignInForm(UserName, user, pass, pass_confirm){
 	var alertMsg = [];
 	var isValid = true;
-	if(UserName.length == 0 && UserName.length > 50){
+	if(UserName.length == 0 || UserName.length > 50){
 	    alertMsg.push("Input a valid name");
 	    isValid = false;
 	}
