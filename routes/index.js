@@ -4,6 +4,14 @@ var user = {email: "", password: "", name: ""};
 var isLogedIn = false;
 var error = [];
 
+router.get('/user/logout', function(req, res, next) {
+    user.email = "";
+    user.name = "";
+    user.password = "";
+    isLogedIn = false;
+    res.redirect('/');
+});
+
 /* GET home page */
 router.get('/', function(req, res, next) {
     user.email = "";
@@ -243,7 +251,7 @@ function validateEmail(email){
 }
 
 /* POST delete task form */
-router.post('/deletetask', function(req, res) {
+router.post('/task/delete', function(req, res) {
 
     var db = req.db;
 
@@ -262,7 +270,7 @@ router.post('/deletetask', function(req, res) {
                 res.send("There was a problem removing the information to the database.");
             }
             else {
-                res.redirect("dashboard");
+                res.redirect("/dashboard");
             }
         });
 });
