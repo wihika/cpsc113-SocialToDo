@@ -31,7 +31,7 @@ block content
                 each taskList, i in task
                     ul        
                         li
-                            div(class="task")
+                            div(class="tasks-list-item")
                                 p Title: #{taskList.title}
                                 p Description: #{taskList.description}
                                 p Owner: #{taskList.colaborator0}
@@ -55,16 +55,16 @@ block content
                                                 input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                                 button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
-                                    form(name='updatetask', action='updatetask', method='post', accept-charset='utf-8', class='taskForm')
+                                    form(name='updatetask', action='/task/toggle-complete', method='post', accept-charset='utf-8', class='taskForm')
                                         input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                         input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                         input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
                                         if taskList.state
-                                            button(type='submit', value='Done' class="taskGreenFormButton tasks-list-mark")
+                                            button(type='submit', value='Done' class="taskGreenFormButton toggle-task complete-task")
                                                 span(name = "taskState", class="state") Complete
                                         else
-                                            button(type='submit', value='Done' class="taskRedFormButton")
+                                            button(type='submit', value='Done' class="taskRedFormButton toggle-task")
                                                 span(name = "taskState", class="state") Not Complete
     script(type='text/javascript').
         function configTaskPage(){

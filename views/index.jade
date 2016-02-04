@@ -4,7 +4,7 @@ block content
   body#bodyLayout(onload="configLogPage()")
     div.menu()
         form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8', onsubmit='return validateForm()')
-            input(type='text', name='fl_name', placeholder='first &amp; last name')
+            input(type='text', name='fl_name', placeholder='first & last name')
             input(type='text', name='email', placeholder='email@email.com')
             input(type='password', name='password', placeholder='Password')
             input(type='password', name='password_confirmation', placeholder='Password confirmation')

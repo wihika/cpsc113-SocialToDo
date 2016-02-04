@@ -150,7 +150,7 @@ function validateSignInForm(UserName, user, pass, pass_confirm){
 	var alertMsg = [];
 	var isValid = true;
 	if(UserName.length == 0){
-	    alertMsg.push("Input a name");
+	    alertMsg.push("Input a valid name");
 	    isValid = false;
 	}
 	if(user.length>50 || user.length==0){
@@ -276,7 +276,7 @@ router.post('/task/delete', function(req, res) {
 });
 
 /* POST update task form */
-router.post('/updatetask', function(req, res) {
+router.post('/task/toggle-complete', function(req, res) {
     var db = req.db;
     
     var title = req.body.taskTitle;
@@ -306,7 +306,7 @@ router.post('/updatetask', function(req, res) {
                     res.send("There was a problem removing the information to the database.");
                 }
                 else {
-                    res.redirect("dashboard");
+                    res.redirect("/dashboard");
                 }
             });
         });
