@@ -3,6 +3,7 @@ extends layout
 block content
   body#bodyLayout(onload="configLogPage()")
     div.menu()
+        // add user form
         form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8')
             input(type='text', name='fl_name', placeholder='first & last name')
             input(type='text', name='email', placeholder='email@email.com')
@@ -17,12 +18,13 @@ block content
       if errormsg
         each error, i in errormsg
           p(class="validation-error")=error
-      form#login(class="login", name="login", method="post", action="/user/login")
+      // login form
+      form#login(action="/user/login", class="login", name="login", method="post")
         p(class="title") Log in
         input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
-        i(class="fa-email")
+        i(class="fa")
         input#inputPassword(type="password", placeholder="Password", name="password")
-        i(class="fa-pass")
+        i(class="fa")
         button#btnSubmit(class="loginButton log-in-submit", type="submit")
           i(class="spinner")
           span(class="state") Log in
