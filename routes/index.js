@@ -48,7 +48,7 @@ router.post('/user/login', function(req, res) {
                 });
             }else{
                 var alertMsg = [];
-                alertMsg.push("Invalid email address");
+                alertMsg.push(" Invalid email address, try again or register ");
                 res.render('index', {"errormsg" : alertMsg});
             }
         });
@@ -258,7 +258,6 @@ function validateEmail(email){
 
 /* POST delete task form */
 router.post('/task/delete', function(req, res) {
-    console.log("HERE");
     var db = req.db;
 
     var id= req.body.taskId;
