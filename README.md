@@ -1,5 +1,6 @@
 # cpsc113-SocialToDo
 Heroku link = http://socialtodo.herokuapp.com/
+
 *On cloud 9 = to run this code on cloud 9 you need to change the connection string to Mongo on App.js, then run "npm start".
 
 (all tests are passing but the one that checks if there is a "invalid email address" error message after you try to log in with a unregistered email has some issues that I just can't figure out. Some times it pass and the majority of time it fails. If you test the site and use as an input and ivalid email you will be able to see that the a message containing the string "invalid email address" shows up on the login screen with the error message. But for a strange reason it is invisible for casperjs)
