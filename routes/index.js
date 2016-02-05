@@ -231,7 +231,7 @@ function validateCreateTask(title, description){
     var isValid = true;
     var alertMsg = [];
     
-    if(title.length == 0){
+    if(title.length == 0 || title.length > 500){
         isValid = false;
         alertMsg.push("Input a title for the task");
     }
