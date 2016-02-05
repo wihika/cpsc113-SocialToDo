@@ -19,7 +19,7 @@ block content
         each error, i in errormsg
           p(class="validation-error")=error
       // login form
-      form#login(action="/user/login", class="login", name="login", method="post")
+      form#loginForm(action="/user/login", class="login", name="loginForm", method="post")
         p(class="title") Log in
         input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
         i(class="fa")
