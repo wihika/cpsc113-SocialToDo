@@ -268,7 +268,7 @@ router.post('/task/delete', function(req, res) {
         var collection = db.get('usercollection');
 
         collection.remove({
-            "_id" : id
+            _id : id
         }, function (err, doc) {
             if (err) {
                 res.send("There was a problem removing the information to the database.");
@@ -292,7 +292,7 @@ router.post('/task/toggle-complete', function(req, res) {
         var collection = db.get('usercollection');
 
         collection.find({
-        "_id" : id
+            _id : id
         }, function (err, doc) {
             var newState;
             if(oldState === "1"){
@@ -301,7 +301,7 @@ router.post('/task/toggle-complete', function(req, res) {
                 newState = 1;
             }
             collection.update({
-                "_id" : id
+                _id : id
             }, {$set : {"state" : newState}}, function (err, doc) {
                 if (err) {
                     res.send("There was a problem removing the information to the database.");
