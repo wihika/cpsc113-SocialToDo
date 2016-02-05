@@ -143,9 +143,9 @@ block content
                 span(class="state") Cancel
   
       div#mainContent(class="wrapper")
-            if errormsg
-              each error, i in errormsg
-                p(class="validation-error")=error
+        if errormsg
+          each error, i in errormsg
+            p(class="validation-error")=error
         // login form
         form#loginForm(action="/user/login", class="login", name="loginForm", method="post")
           p(class="title") Log in
