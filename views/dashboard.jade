@@ -8,16 +8,16 @@ block content
     body#bodyLayout(onload="configTaskPage()")
         div.menu()
           // task create
-          form(action="/task/create", method='post')
-                    input(type='text', name='title', placeholder='Title')
-                    input(type='text', name='description', placeholder='Description')
+          form(action="/task/create" , name='createtask',  method='post', class="login", accept-charset='utf-8')
+                    input(type='text', name='title', placeholder='Title', required, autofocus)
+                    input(type='text', name='description', placeholder='Description', required)
                     input(type='text', name='colaborator1', placeholder='colaborator1@email.com')
                     input(type='text', name='colaborator2', placeholder='colaborator2@email.com')
                     input(type='text', name='colaborator3', placeholder='colaborator3@email.com')
                     button(type='submit', value='Submit' class="submitButton")
-                        span() Submit
+                        span(class="state") Submit
                     button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
-                        span() Cancel
+                        span(class="state") Cancel
         section
             center
                 h1 Welcome, #{user[0].name}
@@ -50,24 +50,24 @@ block content
                                     -var userEmail = user[0].email
                                     if owner == userEmail
                                             // delete task
-                                            form(action='/task/delete', method='post')
+                                            form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
                                                 input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                                 input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                                 input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                                 button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
                                     // update task
-                                    form(action='/task/toggle-complete', method='post')
+                                    form(name='updatetask', action='/task/toggle-complete', method='post', accept-charset='utf-8', class='taskForm')
                                         input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                         input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                         input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
                                         if taskList.state
                                             button(type='submit', value='Done' class="taskGreenFormButton toggle-task complete-task")
-                                                span() Complete
+                                                span(name = "taskState", class="state") Complete
                                         else
                                             button(type='submit', value='Done' class="taskRedFormButton toggle-task")
-                                                span() Not Complete
+                                                span(name = "taskState", class="state") Not Complete
     script(type='text/javascript').
         function configTaskPage(){
             //var errormsg = "#{errormsg}";
@@ -88,6 +88,3 @@ block content
                 }, 200);
         }
     script(type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-    
-    
-    

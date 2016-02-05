@@ -4,33 +4,33 @@ block content
   body#bodyLayout(onload="configLogPage()")
     div.menu()
         // add user form
-        form(action='/user/register', method='post')
+        form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8')
             input(type='text', name='fl_name', placeholder='first & last name')
             input(type='text', name='email', placeholder='email@email.com')
             input(type='password', name='password', placeholder='Password')
             input(type='password', name='password_confirmation', placeholder='Password confirmation')
-            button(type='submit', value='Submit', class="sign-up-submit")
-              span() Submit
-            button(class="cancelButton", type='button' onclick='closeSignInForm()' value='Cancel')
-              span() Cancel
+            button(type='submit', value='Submit', class="submitButton sign-up-submit")
+              span(class="state") Submit
+            button(class="cancelButton", type='button' onclick='closeSignInForm()' value='Cancel', background="red")
+              span(class="state") Cancel
 
     div#mainContent(class="wrapper")
       if errormsg
         each error, i in errormsg
           p(class="validation-error")=error
       // login form
-      form#loginForm(action="/user/login", method="POST")
+      form#loginForm(action="/user/login", class="login", name="loginForm", method="post")
         p(class="title") Log in
-        input#inputEmail(type="text", placeholder="Email", name="email", id="email")
-        i()
-        input#inputPassword(type="password", placeholder="Password", name="password", id="password")
-        i()
-        button#btnSubmit(class="log-in-submit", type="submit")
-          i()
-          span() Log in
+        input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
+        i(class="fa")
+        input#inputPassword(type="password", placeholder="Password", name="password")
+        i(class="fa")
+        button#btnSubmit(class="loginButton log-in-submit", type="submit")
+          i(class="spinner")
+          span(class="state") Log in
         button#btnSignin(class="signinButton", type="button", onclick="openSignInForm()")
-          i()
-          span() Sign up
+          i(class="spinner")
+          span(class="state") Sign up
   footer
     a(href="/user/logout") Log out
   script(type='text/javascript').
