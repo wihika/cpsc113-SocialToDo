@@ -4,6 +4,7 @@ var user = {email: "", password: "", name: ""};
 var isLogedIn = false;
 var error = [];
 
+/* GET log out */
 router.get('/user/logout', function(req, res, next) {
     user.email = "";
     user.name = "";
@@ -201,7 +202,7 @@ router.post('/task/create', function(req, res) {
             colaborator3 = req.body.colaborator3;
         }
 
-    var validation = true;//validateCreateTask(title, description);
+    var validation = validateCreateTask(title, description);
     var collection = db.get('usercollection');
     if(validation == true){
         collection.insert({
@@ -252,7 +253,7 @@ function validateEmail(email){
 	if(!filter.test(email)){
 	    isValid = false;
 	} 
-	return isValid
+	return isValid;
 }
 
 /* POST delete task form */
@@ -260,10 +261,7 @@ router.post('/task/delete', function(req, res) {
     console.log("HERE");
     var db = req.db;
 
-    var title = req.body.taskTitle;
     var id= req.body.taskId;
-    var description = req.body.taskDescription;
-    var colaborator0 = user.email;
 
         var collection = db.get('usercollection');
 
@@ -283,10 +281,7 @@ router.post('/task/delete', function(req, res) {
 router.post('/task/complete', function(req, res) {
     var db = req.db;
     
-    var title = req.body.taskTitle;
     var id= req.body.taskId;
-    var description = req.body.taskDescription;
-    var colaborator0 = req.body.taskColaborator0;
     var oldState = req.body.taskState;
 
         var collection = db.get('usercollection');
