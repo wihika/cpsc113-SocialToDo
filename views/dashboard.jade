@@ -9,11 +9,11 @@ block content
         div.menu()
           // task create
           form(action="/task/create", method='post', class="login")
-                    input(type='text', name='task_title', placeholder='Title', required, autofocus)
-                    input(type='text', name='task_description', placeholder='Description', required)
-                    input(type='text', name='task_colaborator1', placeholder='colaborator1@email.com')
-                    input(type='text', name='task_colaborator2', placeholder='colaborator2@email.com')
-                    input(type='text', name='task_colaborator3', placeholder='colaborator3@email.com')
+                    input(type='text', name='title', placeholder='Title', required, autofocus)
+                    input(type='text', name='description', placeholder='Description', required)
+                    input(type='text', name='colaborator1', placeholder='colaborator1@email.com')
+                    input(type='text', name='colaborator2', placeholder='colaborator2@email.com')
+                    input(type='text', name='colaborator3', placeholder='colaborator3@email.com')
                     button(type='submit', value='Submit' class="submitButton")
                         span() Submit
                     button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
