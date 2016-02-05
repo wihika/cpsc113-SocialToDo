@@ -9,15 +9,15 @@ block content
         div.menu()
           // task create
           form(action="/task/create" , name='createtask',  method='post', class="login", accept-charset='utf-8')
-                    input(type='text', name='title', placeholder='Title', required, autofocus)
-                    input(type='text', name='description', placeholder='Description', required)
-                    input(type='text', name='colaborator1', placeholder='colaborator1@email.com')
-                    input(type='text', name='colaborator2', placeholder='colaborator2@email.com')
-                    input(type='text', name='colaborator3', placeholder='colaborator3@email.com')
-                    button(type='submit', value='Submit' class="submitButton")
-                        span(class="state") Submit
-                    button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
-                        span(class="state") Cancel
+            input(type='text', name='title', placeholder='Title', required, autofocus)
+            input(type='text', name='description', placeholder='Description', required)
+            input(type='text', name='collaborator1', placeholder='colaborator1@email.com')
+            input(type='text', name='collaborator2', placeholder='colaborator2@email.com')
+            input(type='text', name='collaborator3', placeholder='colaborator3@email.com')
+            button(type='submit', value='Submit' class="submitButton")
+                span(class="state") Submit
+            button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
+                span(class="state") Cancel
         section
             center
                 h1 Welcome, #{user[0].name}

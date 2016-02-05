@@ -31,18 +31,6 @@ block content
         button#btnSignin(class="signinButton", type="button", onclick="openSignInForm()")
           i(class="spinner")
           span(class="state") Sign up
-          
-      form(action="/task/create" , name='createtask',  method='post', class="login", accept-charset='utf-8')
-        input(type='text', name='title', placeholder='Title', required, autofocus)
-        input(type='text', name='description', placeholder='Description', required)
-        input(type='text', name='colaborator1', placeholder='colaborator1@email.com')
-        input(type='text', name='colaborator2', placeholder='colaborator2@email.com')
-        input(type='text', name='colaborator3', placeholder='colaborator3@email.com')
-        button(type='submit', value='Submit' class="submitButton")
-          span(class="state") Submit
-        button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
-          span(class="state") Cancel
-          
   footer
     a(href="/user/logout") Log out
   script(type='text/javascript').
