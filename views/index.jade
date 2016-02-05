@@ -29,56 +29,85 @@ block content
                         p(class="validation-error")=error
         section
             center
-                each taskList, i in task
-                    ul        
-                        li
-                            div(class="tasks-list-item")
-                                p 
-                                  span(class="task-title") Title: #{taskList.title}
-                                p Description: #{taskList.description}
-                                p Owner: #{taskList.colaborator0}
-                                p Colaborators: 
-                                    -var taskColaborator1 = taskList.colaborator1
-                                    -var taskColaborator2 = taskList.colaborator2
-                                    -var taskColaborator3 = taskList.colaborator3
-                                    if taskColaborator1 != 'null'
-                                        |#{taskList.colaborator1}
-                                    if taskColaborator2 != 'null'
-                                        |#{taskList.colaborator2}
-                                    if taskColaborator3 != 'null'
-                                        |#{taskList.colaborator3}
-                                p
-                                    -var owner = taskList.colaborator0
-                                    -var userEmail = user[0].email
-                                    if owner == userEmail
-                                      // delete task
-                                      form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
-                                        input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
-                                        input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
-                                        input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
-                                        input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
-                                        button(type='submit', class="taskRedFormButton delete-task")
-                                            span(class="state") Delete
-                                    // update tasks
-                                    if taskList.state
-                                      div(class="complete-task")
-                                      form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm')
-                                        input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
-                                        input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
-                                        input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
-                                        input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
-                                        input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
-                                        button(type='submit', class="taskGreenFormButton toggle-task")
-                                          span(name = "taskState", class="state") Complete
-                                    else
-                                      form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm')
-                                        input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
-                                        input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
-                                        input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
-                                        input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
-                                        input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
-                                        button(type='submit', value='Done' class="taskRedFormButton toggle-task")
-                                          span(name = "taskState", class="state") Not Complete
+                ul
+                    each taskList, i in task
+                        li(class="tasks-item")
+                            if taskList.state
+                                div(class="tasks-list-item complete-task")
+                                    p 
+                                        span(class="task-title") Title: #{taskList.title}
+                                    p Description: #{taskList.description}
+                                    p Owner: #{taskList.colaborator0}
+                                    p Colaborators: 
+                                      -var taskColaborator1 = taskList.colaborator1
+                                      -var taskColaborator2 = taskList.colaborator2
+                                      -var taskColaborator3 = taskList.colaborator3
+                                      if taskColaborator1 != 'null'
+                                          |#{taskList.colaborator1}
+                                      if taskColaborator2 != 'null'
+                                          |#{taskList.colaborator2}
+                                      if taskColaborator3 != 'null'
+                                          |#{taskList.colaborator3}
+                                    p
+                                      -var owner = taskList.colaborator0
+                                      -var userEmail = user[0].email
+                                      if owner == userEmail
+                                        // delete task
+                                        form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', class="taskRedFormButton delete-task")
+                                              span(class="state") Delete
+                                      // update tasks
+                                      if taskList.state
+                                        form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm complete-task')
+                                          input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', class="taskGreenFormButton toggle-task")
+                                            span(name = "taskState", class="state") Complete
+                                      else
+                                        form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm')
+                                          input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', value='Done' class="taskRedFormButton toggle-task")
+                                            
+                            else
+                                div(class="tasks-list-item")
+                                  p 
+                                    span(class="task-title") Title: #{taskList.title}
+                                  p Description: #{taskList.description}
+                                  p Owner: #{taskList.colaborator0}
+                                  p Colaborators: 
+                                      -var taskColaborator1 = taskList.colaborator1
+                                      -var taskColaborator2 = taskList.colaborator2
+                                      -var taskColaborator3 = taskList.colaborator3
+                                      if taskColaborator1 != 'null'
+                                          |#{taskList.colaborator1}
+                                      if taskColaborator2 != 'null'
+                                          |#{taskList.colaborator2}
+                                      if taskColaborator3 != 'null'
+                                          |#{taskList.colaborator3}
+                                  p
+                                      -var owner = taskList.colaborator0
+                                      -var userEmail = user[0].email
+                                      if owner == userEmail
+                                        // delete task
+                                        form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', class="taskRedFormButton delete-task")
+                                              span(class="state") Delete
+                                      // update tasks
+                                      if taskList.state
+                                        form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm complete-task')
+                                          input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', class="taskGreenFormButton toggle-task")
+                                            span(name = "taskState", class="state") Complete
+                                      else
+                                        form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm')
+                                          input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                          input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
+                                          button(type='submit', value='Done' class="taskRedFormButton toggle-task")
+                                            span(name = "taskState", class="state") Not Complete
     script(type='text/javascript').
         function configTaskPage(){
             //var errormsg = "#{errormsg}";
