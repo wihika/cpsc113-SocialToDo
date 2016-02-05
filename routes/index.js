@@ -9,7 +9,7 @@ router.get('/user/logout', function(req, res, next) {
     user.name = "";
     user.password = "";
     isLogedIn = false;
-    res.redirect('/');
+    res.render('index', {isLogedIn: isLogedIn});
 });
 
 /* GET home page */
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     user.name = "";
     user.password = "";
     isLogedIn = false;
-    res.render('index');
+    res.render('index', {"isLogedIn": isLogedIn});
 });
 
 /* POST log-in form */
@@ -94,10 +94,11 @@ router.get('/dashboard', function(req, res) {
                 {colaborator2 : user.email}
             ]},function(e,tasks){
                 var taskData = tasks;
-                res.render('dashboard', {
+                res.render('index', {
                     "user" : userData,
                     "task" : taskData,
-                    "errormsg": errormsg
+                    "errormsg": errormsg,
+                    "isLogedIn": isLogedIn
                 });
             });
         });
