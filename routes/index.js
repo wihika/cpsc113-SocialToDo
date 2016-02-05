@@ -133,7 +133,11 @@ router.post('/user/register', function(req, res) {
                     if (err) {
                         res.send("There was a problem adding the information to the database.");
                     }else {
-                    res.render("index");
+                        user.email = userEmail;
+                        user.password = password;
+                        user.name = name;
+                        isLogedIn = true;
+                        res.render("/dashboard");
                     }
                 });
             }else{
