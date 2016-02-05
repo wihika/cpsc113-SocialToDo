@@ -19,13 +19,13 @@ block content
         each error, i in errormsg
           p(class="validation-error")=error
       // login form
-      form#loginForm(action="/user/login", class="login", method="post")
+      form#loginForm(action="/user/login", method="POST")
         p(class="title") Log in
-        input#inputEmail(type="text", placeholder="Email", name="email")
+        input#inputEmail(type="text", placeholder="Email", name="email", id="email")
         i()
-        input#inputPassword(type="password", placeholder="Password", name="password")
+        input#inputPassword(type="password", placeholder="Password", name="password", id="password")
         i()
-        button#btnSubmit(class="loginButton log-in-submit", type="submit")
+        button#btnSubmit(class="log-in-submit", type="submit")
           i()
           span() Log in
         button#btnSignin(class="signinButton", type="button", onclick="openSignInForm()")

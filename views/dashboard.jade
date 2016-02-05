@@ -8,9 +8,9 @@ block content
     body#bodyLayout(onload="configTaskPage()")
         div.menu()
           // task create
-          form(action="/task/create", method='post', class="login")
-                    input(type='text', name='title', placeholder='Title', required, autofocus)
-                    input(type='text', name='description', placeholder='Description', required)
+          form(action="/task/create", method='post')
+                    input(type='text', name='title', placeholder='Title')
+                    input(type='text', name='description', placeholder='Description')
                     input(type='text', name='colaborator1', placeholder='colaborator1@email.com')
                     input(type='text', name='colaborator2', placeholder='colaborator2@email.com')
                     input(type='text', name='colaborator3', placeholder='colaborator3@email.com')
