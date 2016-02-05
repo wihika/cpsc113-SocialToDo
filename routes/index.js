@@ -189,18 +189,9 @@ router.post('/task/create', function(req, res) {
     var title = req.body.title;
     var description = req.body.description;
     var colaborator0 = user.email;
-    var colaborator1 = "null";
-    var colaborator2 = "null";
-    var colaborator3 = "null";
-        if(validateEmail(req.body.task_colaborator1)){
-            colaborator1 = req.body.colaborator1;
-        }
-        if(validateEmail(req.body.task_colaborator2)){
-            colaborator2 = req.body.colaborator2;
-        }
-        if(validateEmail(req.body.task_colaborator3)){
-            colaborator3 = req.body.colaborator3;
-        }
+    var colaborator1 = req.body.colaborator1;
+    var colaborator2 = req.body.task_colaborator2;
+    var colaborator3 = req.body.colaborator3;
 
     var validation = validateCreateTask(title, description);
     var collection = db.get('usercollection');
