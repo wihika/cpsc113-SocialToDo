@@ -48,7 +48,7 @@ router.post('/user/login', function(req, res) {
                 });
             }else{
                 var alertMsg = [];
-                alertMsg.push(" Invalid email address, try again or register ");
+                alertMsg.push("Invalid email address");
                 res.render('index', {"errormsg" : alertMsg});
             }
         });
