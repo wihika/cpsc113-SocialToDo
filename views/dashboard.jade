@@ -8,16 +8,16 @@ block content
     body#bodyLayout(onload="configTaskPage()")
         div.menu()
           // task create
-          form(action="/task/create" , name='createtask',  method='post', class="login", accept-charset='utf-8')
+          form(action="/task/create", method='post', class="login")
                     input(type='text', name='task_title', placeholder='Title', required, autofocus)
                     input(type='text', name='task_description', placeholder='Description', required)
                     input(type='text', name='task_colaborator1', placeholder='colaborator1@email.com')
                     input(type='text', name='task_colaborator2', placeholder='colaborator2@email.com')
                     input(type='text', name='task_colaborator3', placeholder='colaborator3@email.com')
                     button(type='submit', value='Submit' class="submitButton")
-                        span(class="state") Submit
+                        span() Submit
                     button(type='button' onclick='closeCreateTaskForm()' value='Cancel' class="cancelButton")
-                        span(class="state") Cancel
+                        span() Cancel
         section
             center
                 h1 Welcome, #{user[0].name}
@@ -50,24 +50,24 @@ block content
                                     -var userEmail = user[0].email
                                     if owner == userEmail
                                             // delete task
-                                            form(name='deletetask', action='/task/delete', method='post', accept-charset='utf-8', class='taskForm')
+                                            form(action='/task/delete', method='post')
                                                 input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                                 input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                                 input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                                 button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
                                     // update task
-                                    form(name='updatetask', action='/task/toggle-complete', method='post', accept-charset='utf-8', class='taskForm')
+                                    form(action='/task/toggle-complete', method='post')
                                         input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                         input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                         input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
                                         if taskList.state
                                             button(type='submit', value='Done' class="taskGreenFormButton toggle-task complete-task")
-                                                span(name = "taskState", class="state") Complete
+                                                span() Complete
                                         else
                                             button(type='submit', value='Done' class="taskRedFormButton toggle-task")
-                                                span(name = "taskState", class="state") Not Complete
+                                                span() Not Complete
     script(type='text/javascript').
         function configTaskPage(){
             //var errormsg = "#{errormsg}";
