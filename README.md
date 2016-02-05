@@ -5,4 +5,4 @@ Heroku link = http://socialtodo.herokuapp.com/
 
 Sorry for the late submit of the project but I tried to do it the hard way (trying to do it by myself. Googling for everything ) and I just tested in the end (after I learned how to deploy it on heroku). So when the tests were running I had almost no time to make the corrections.
 
-Because I stated my project on a different way I faced some issues to deploy on heroku and connect to MongoLabs, so to force it I hardcoded the connection string. (I know its wrong, but every other thing that I tried failed).
+Because I stated my project on a different way I faced some issues to deploy on heroku and connect to MongoLabs, so to force it I hardcoded the connection string. (I know it is wrong, but every other thing that I tried failed).
