@@ -230,7 +230,7 @@ function validateCreateTask(title, description){
         isValid = false;
         alertMsg.push("Input a title for the task");
     }
-    if(description.length == 0 || description.length<5000){
+    if(description.length == 0 || description.length > 5000){
         isValid = false;
         alertMsg.push("Input a description for the task");
     }

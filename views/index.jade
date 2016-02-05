@@ -3,7 +3,7 @@ extends layout
 block content
   body#bodyLayout(onload="configLogPage()")
     div.menu()
-        form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8', onsubmit='return validateForm()')
+        form(class="login", name='adduser', action='/user/register', method='post', accept-charset='utf-8')
             input(type='text', name='fl_name', placeholder='first & last name')
             input(type='text', name='email', placeholder='email@email.com')
             input(type='password', name='password', placeholder='Password')
@@ -17,7 +17,7 @@ block content
       if errormsg
         each error, i in errormsg
           p(class="validation-error")=error
-      form#login(class="login", name="login", method="post", action="/user/login", onsubmit="")
+      form#login(class="login", name="login", method="post", action="/user/login")
         p(class="title") Log in
         input#inputEmail(type="text", placeholder="Email", name="email", autofocus)
         i(class="fa-email")
