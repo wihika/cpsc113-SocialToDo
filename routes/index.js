@@ -200,8 +200,9 @@ router.post('/task/create', function(req, res) {
             colaborator3 = req.body.colaborator3;
         }
 
-    var validation = validateCreateTask(title, description);
-    var collection = db.get('usercollection');
+    var //validation = validateCreateTask(title, description);
+    var collection = db.get('usercollection
+    var validation = true;
     if(validation == true){
         collection.insert({
             "title" : title,
