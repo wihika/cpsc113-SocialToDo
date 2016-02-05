@@ -14,11 +14,11 @@ router.get('/user/logout', function(req, res, next) {
 
 /* GET home page */
 router.get('/', function(req, res, next) {
-    user.email = "";
-    user.name = "";
-    user.password = "";
-    isLogedIn = false;
-    res.render('index', {"isLogedIn": isLogedIn});
+    if(isLogedIn){
+        res.redirect("/dashboard");
+    }else{
+        res.render('index', {"isLogedIn": isLogedIn});
+    }
 });
 
 /* POST log-in form */
