@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
 /* POST log-in form */
 router.post('/user/login', function(req, res) {
     var validation = validateLogInForm(req.body.email, req.body.password);
+    var alertMsg = [];
     if(validation==true){
         var db = req.db;
         var emailUser = req.body.email;
@@ -35,7 +36,6 @@ router.post('/user/login', function(req, res) {
             if (docs.length == 1) {
                 collection.find({ email: emailUser, password: passwordUser}, function(e,docs){
                     if(docs.length < 1){
-                        var alertMsg = [];
                         alertMsg.push("Invalid password");
                         res.render('index', {"errormsg" : alertMsg});
                     }else{
@@ -47,7 +47,6 @@ router.post('/user/login', function(req, res) {
                     }
                 });
             }else{
-                var alertMsg = [];
                 alertMsg.push("Invalid email address");
                 res.render('index', {"errormsg" : alertMsg});
             }
