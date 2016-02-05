@@ -261,15 +261,14 @@ router.post('/task/delete', function(req, res) {
     var db = req.db;
 
     var title = req.body.taskTitle;
+    var id= req.body.taskId;
     var description = req.body.taskDescription;
     var colaborator0 = user.email;
 
         var collection = db.get('usercollection');
 
         collection.remove({
-            "title" : title,
-            "description" : description,
-            "colaborator0" : colaborator0
+            "_id" : id
         }, function (err, doc) {
             if (err) {
                 res.send("There was a problem removing the information to the database.");
@@ -285,6 +284,7 @@ router.post('/task/toggle-complete', function(req, res) {
     var db = req.db;
     
     var title = req.body.taskTitle;
+    var id= req.body.taskId;
     var description = req.body.taskDescription;
     var colaborator0 = req.body.taskColaborator0;
     var oldState = req.body.taskState;
@@ -292,9 +292,7 @@ router.post('/task/toggle-complete', function(req, res) {
         var collection = db.get('usercollection');
 
         collection.find({
-        "title" : title,
-        "description" : description,
-        "colaborator0" : colaborator0
+        "_id" : id
         }, function (err, doc) {
             var newState;
             if(oldState === "1"){
@@ -303,9 +301,7 @@ router.post('/task/toggle-complete', function(req, res) {
                 newState = 1;
             }
             collection.update({
-                "title" : title,
-                "description" : description,
-                "colaborator0" : colaborator0
+                "_id" : id
             }, {$set : {"state" : newState}}, function (err, doc) {
                 if (err) {
                     res.send("There was a problem removing the information to the database.");

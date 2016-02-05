@@ -54,6 +54,7 @@ block content
                                                 input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                                 input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                                 input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
+                                                input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
                                                 button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
                                     // update task
@@ -62,6 +63,7 @@ block content
                                         input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
                                         input(type="hidden", name='taskState' display='block', value='#{taskList.state}')
+                                        input(type="hidden", name='taskId' display='block', value='#{taskList._id}')
                                         if taskList.state
                                             button(type='submit', value='Done' class="taskGreenFormButton toggle-task complete-task")
                                                 span(name = "taskState", class="state") Complete
