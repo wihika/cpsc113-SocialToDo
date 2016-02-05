@@ -184,7 +184,7 @@ function validateSignInForm(UserName, user, pass, pass_confirm){
 router.post('/task/create', function(req, res) {
     var db = req.db;
     
-    var title = req.body.task_title;
+    var title = req.body.title;
     var description = req.body.description;
     var colaborator0 = user.email;
     var colaborator1 = "null";
@@ -256,7 +256,7 @@ function validateEmail(email){
 
 /* POST delete task form */
 router.post('/task/delete', function(req, res) {
-
+    console.log("HERE");
     var db = req.db;
 
     var title = req.body.taskTitle;
