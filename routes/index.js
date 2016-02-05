@@ -137,7 +137,7 @@ router.post('/user/register', function(req, res) {
                         user.password = password;
                         user.name = name;
                         isLogedIn = true;
-                        res.render("/dashboard");
+                        res.redirect("/dashboard");
                     }
                 });
             }else{
