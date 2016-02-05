@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     if(isLogedIn){
         res.redirect("/dashboard");
     }else{
-        res.render('index', {"isLogedIn": isLogedIn});
+        res.render('index', {"isLogedIn": isLogedIn, "errormsg": error});
     }
 });
 
@@ -62,16 +62,16 @@ function validateLogInForm(user, pass){
 	var alertMsg = [];
 	var isValid = true;
 	if(user.length>50 || user.length==0){
-		alertMsg.push("User email must be between 0 and 50 characters");
+		alertMsg.push("Invalid email address");
 		isValid = false;
 	}
 	if(pass.length>50 || pass.length==0){
-		alertMsg.push("Password must be between 0 and 50 characters");
+		alertMsg.push("Invalid password");
 		isValid = false;
 	}
 	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 	if(!filter.test(user) && user.length>0){
-	    alertMsg.push("Input a valid email");
+	    alertMsg.push("Invalid email address");
 	    isValid = false;
 	}
 	if(!isValid){
@@ -160,16 +160,16 @@ function validateSignInForm(UserName, user, pass, pass_confirm){
 	    isValid = false;
 	}
 	if(user.length>50 || user.length==0){
-		alertMsg.push("User email must be between 0 and 50 characters");
+		alertMsg.push("Invalid email address");
 		isValid = false;
 	}
 	if(pass.length>50 || pass.length==0){
-		alertMsg.push("Password must be between 0 and 50 characters");
+		alertMsg.push("Invalid password");
 		isValid = false;
 	}
 	var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 	if(!filter.test(user) && user.length > 0){
-	    alertMsg.push("Input a valid email");
+	    alertMsg.push("Invalid email address");
 	    isValid = false;
 	}
 	if(pass_confirm.localeCompare(pass) != 0){

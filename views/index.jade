@@ -145,7 +145,7 @@ block content
       div#mainContent(class="wrapper")
         if errormsg
           each error, i in errormsg
-            div(class="validation-error")=error
+            p(class="validation-error")=error
         // login form
         form#loginForm(action="/user/login", class="login", name="loginForm", method="post")
           p(class="title") Log in
