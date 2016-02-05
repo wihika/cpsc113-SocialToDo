@@ -280,7 +280,7 @@ router.post('/task/delete', function(req, res) {
 });
 
 /* POST update task form */
-router.post('/task/toggle-complete', function(req, res) {
+router.post('/task/complete', function(req, res) {
     var db = req.db;
     
     var title = req.body.taskTitle;

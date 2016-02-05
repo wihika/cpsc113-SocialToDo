@@ -60,7 +60,7 @@ block content
                                                 button(type='submit', value='Delete' class="taskRedFormButton delete-task")
                                                     span(class="state") Delete
                                     // update task
-                                    form(name='updatetask', action='/task/toggle-complete', method='post', accept-charset='utf-8', class='taskForm')
+                                    form(name='updatetask', action='/task/complete', method='post', accept-charset='utf-8', class='taskForm')
                                         input(type="hidden", name='taskTitle' display='block', value='#{taskList.title}')
                                         input(type="hidden", name='taskDescription' display='block', value='#{taskList.description}')
                                         input(type="hidden", name='taskColaborator0' display='block', value='#{taskList.colaborator0}')
