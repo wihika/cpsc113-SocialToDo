@@ -141,11 +141,11 @@ block content
                 span(class="state") Submit
               button(class="cancelButton", type='button' onclick='closeSignInForm()' value='Cancel', background="red")
                 span(class="state") Cancel
-      section
+  
+      div#mainContent(class="wrapper")
             if errormsg
               each error, i in errormsg
                 p(class="validation-error")=error
-      div#mainContent(class="wrapper")
         // login form
         form#loginForm(action="/user/login", class="login", name="loginForm", method="post")
           p(class="title") Log in

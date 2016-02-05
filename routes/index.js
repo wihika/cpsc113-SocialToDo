@@ -47,7 +47,7 @@ router.post('/user/login', function(req, res) {
                     }
                 });
             }else{
-                alertMsg.push("Invalid email address");
+                alertMsg.push("Invalid email address, enter a valid email or sign up");
                 res.render('index', {"errormsg" : alertMsg});
             }
         });
